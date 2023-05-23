@@ -23,34 +23,36 @@
         .buttons div{
             padding: 20px;
         } 
-        #logout-section {
-            margin-bottom: 100px;
-            margin-top: 20px;
-            display: flex; 
-            justify-content: flex-end;
-        }
         #user{
             color: green;
+        }
+         #login-section, #logout-section{
+            text-align: right
         }
     </style>
 </head>
 
 <body>
     <div id="body-content" class="container-fluid row">
-        <div id="login-section" class="col-md-12 col-lg-12 col-sm-12" style="display:none">
-            username: <input id="username" />
-            password: <input id="password" type="password" />
+        <div id="login-section" style="display:none" class="p-4">
+            <input placeholder="username" id="username" />
+            <input placeholder="password" id="password" type="password" />
             <button class="btn btn-primary" id="loginBtn">Login</button>
-            <span id="errorMsg"></span>
+            <div id="errorMsg"></div>
         </div>
-        <div id="logout-section" style="display:none">
-            <span id="user"></span><button class="btn btn-primary" id="logoutBtn">Logout</button>
+        <div id="logout-section" style="display:none"  class="p-4">
+            <span id="user" style="font-size: 30px;"></span>
+            <button class="btn btn-primary" id="logoutBtn">Logout</button>
         </div>
 
         <div id="music-section">
+            <input placeholder="search...." id="search-song" type="text" /> 
+            <button class="btn btn-primary" id="searchBtn">Search</button>
+
             <div class="container-fluid col-md-12 col-lg-12 col-sm-12" id="musiclist-table-container"></div>
             <div class="container-fluid bottom-container col-md-12 col-lg-12 col-sm-12">
-                <div id="playlist-table-container"></div>
+                <div id="playlist-table-container" style="margin-bottom: 300px;
+            "></div>
                 <small id="empty-table" class="d-flex justify-content-center"></small>
             </div>
             <div class="row" id="song-play-section">

@@ -31,13 +31,27 @@ window.onload = function () {
         getAllSongs();
         getAllPlayListSongs();
         showHide({musicSection: 'show', loginSection: 'hide', logoutSection: 'show'});
-        document.getElementById('user').textContent = localStorage.getItem('username');
+        document.getElementById('user').textContent = 'Welcome ' +localStorage.getItem('username');
     } else {
         debugger
         showHide({musicSection: 'hide', loginSection: 'show', logoutSection: 'hide'})
     }
     document.getElementById('logoutBtn').onclick = logout;
     document.getElementById('loginBtn').onclick = login;
+    document.getElementById('searchBtn').onclick = searchSong;
+    
+}
+async function searchSong(){
+    const searchKeyword = document.getElementById('search-song').value;
+    const response = await fetch(BASE_URL + '/api/music?search=' + searchKeyword,
+    {
+        headers: {
+        'Authorization' :`Bearer ${localStorage.getItem('token')}`, 
+        'Content-Type': 'application/json'
+    }
+});
+const filteredSongs = await response.json();
+populateToMusicTable(filteredSongs);
 }
 
 async function getAllSongs() {
