@@ -14,20 +14,32 @@
     <link href="./style.css" rel="stylesheet">
     </link>
     <style>
-        .player{
+        .player {
             position: fixed;
-            bottom:0px;
-            width:100%;
+            bottom: 0px;
+            width: 100%;
         }
 
-        .buttons div{
+        .buttons div {
             padding: 20px;
-        } 
-        #user{
+        }
+
+        #user {
             color: green;
         }
-         #login-section, #logout-section{
+
+        #login-section,
+        #logout-section {
             text-align: right
+        }
+
+        button {
+            border: none;
+        }
+
+        button :hover {
+            cursor: pointer;
+            background-color: greenyellow;
         }
     </style>
 </head>
@@ -40,13 +52,13 @@
             <button class="btn btn-primary" id="loginBtn">Login</button>
             <div id="errorMsg"></div>
         </div>
-        <div id="logout-section" style="display:none"  class="p-4">
+        <div id="logout-section" style="display:none" class="p-4">
             <span id="user" style="font-size: 30px;"></span>
             <button class="btn btn-primary" id="logoutBtn">Logout</button>
         </div>
 
         <div id="music-section">
-            <input placeholder="search...." id="search-song" type="text" /> 
+            <input placeholder="search...." id="search-song" type="text" />
             <button class="btn btn-primary" id="searchBtn">Search</button>
 
             <div class="container-fluid col-md-12 col-lg-12 col-sm-12" id="musiclist-table-container"></div>
