@@ -1,3 +1,30 @@
+.player {
+  position: fixed;
+  bottom: 0px;
+  width: 100%;
+}
+
+.buttons div {
+  padding: 20px;
+}
+
+#user {
+  color: green;
+}
+
+#login-section,
+#logout-section {
+  text-align: right
+}
+
+button {
+  border: none;
+}
+
+button :hover {
+  cursor: pointer;
+  background-color: greenyellow;
+}
 .playpause-song, .prev-song, .next-song {
   padding: 25px;
   opacity: 0.8;
