@@ -33,6 +33,7 @@ window.onload = function () {
         showHide({musicSection: 'show', loginSection: 'hide', logoutSection: 'show'});
         document.getElementById('user').textContent = localStorage.getItem('username');
     } else {
+        debugger
         showHide({musicSection: 'hide', loginSection: 'show', logoutSection: 'hide'})
     }
     document.getElementById('logoutBtn').onclick = logout;
@@ -201,11 +202,10 @@ function loadSong(songIndex) {
     currentSong.src = BASE_URL + "/" + playListBackUp[currentSongIndex].urlPath;
     currentSong.value = playListBackUp[currentSongIndex].songId;
     //currentSong.load();
-    nowPlaying.textContent = `PLAYING ${parseInt(currentSongIndex) + 1}  OF ${playListBackUp.length}`;
     songTitle.textContent = playListBackUp[currentSongIndex].title;
     updateTimer = setInterval(seekUpdate, 1000);
     currentSong.addEventListener('ended', nextSong);
-    // random_bg_color();
+    randomBgColor();
 
 }
 
@@ -412,3 +412,13 @@ function setVolume() {
     currentSong.volume = volumeSlider.value / 100;
 }
 
+
+function randomBgColor() {
+    let red = Math.floor(Math.random() * 256) + 64;
+    let green = Math.floor(Math.random() * 256) + 64;
+    let blue = Math.floor(Math.random() * 256) + 64;
+    let bgColor = "radial-gradient(circle, rgb(" + red + "," + green + "," + blue + ")" + 0 +"%" + "," + "rgb(" + red + "," + green + "," + blue + ")" + 0 + "%)";
+    document.querySelector('.player').style.background = bgColor;
+  }
+  
+  

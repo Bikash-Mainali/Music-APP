@@ -1,11 +1,10 @@
-.player {
+/* .player {
   display: flex;
   align-items: center;
   flex-direction: column;
   justify-content: center;
   background-color: lightgreen;
 
-  /* Smoothly transition the background color */
   transition: background-color .5s;
 }
 
@@ -15,7 +14,7 @@
   flex-direction: column;
   justify-content: center;
   margin-top: 25px;
-}
+} */
 
 /* .song-art {
   margin: 25px;
@@ -26,7 +25,7 @@
   border-radius: 15%;
 } */
 
-.now-playing {
+/* .now-playing {
   font-size: 1rem;
 }
 
@@ -43,7 +42,7 @@
   flex-direction: row;
   align-items: center;
   justify-content: center;
-}
+} */
 
 .playpause-song, .prev-song, .next-song {
   padding: 25px;
