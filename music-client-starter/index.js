@@ -320,7 +320,7 @@ async function login() {
         const result = await response.json();
         localStorage.setItem('token', result.accessToken);
         localStorage.setItem('username', result.username);
-        document.getElementById('user').textContent = result.username;
+        document.getElementById('user').textContent = 'Welcome ' +result.username;
         //location.href = 'welcome.html';
         getAllSongs();
         getAllPlayListSongs();
