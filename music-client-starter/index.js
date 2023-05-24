@@ -325,6 +325,7 @@ async function login(event) {
         getAllSongs();
         getAllPlayListSongs();
         showHide({musicSection: 'show', loginSection: 'hide', logoutSection: 'show'})
+        document.getElementById('errorMsg').innerText = '';
     } else {
         document.getElementById('errorMsg').innerText = 'Incorrect username and password';
     }
