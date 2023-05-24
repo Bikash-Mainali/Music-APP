@@ -15,7 +15,7 @@ let totalDuration = document.querySelector(".total-duration");
 //as a global variables
 let currentSongIndex = 0;
 let isPlaying = false;
-let suffleMode = false;
+let shuffleMode = false;
 let repeatMode = false;
 let defaultMode = true;
 let setModeCount = 0;
@@ -258,7 +258,7 @@ function prevSong() {
     if (repeatMode) {
         currentSongIndex = currentSongIndex;
     }
-    if (suffleMode) {
+    if (shuffleMode) {
         currentSongIndex = Math.floor(Math.random() * playListBackUp.length)
     }
     if (defaultMode) {
@@ -279,7 +279,7 @@ function nextSong() {
     if (repeatMode) {
         currentSongIndex = currentSongIndex;
     }
-    if (suffleMode) {
+    if (shuffleMode) {
         currentSongIndex = Math.floor(Math.random() * playListBackUp.length)
     }
     if (defaultMode) {
@@ -345,14 +345,14 @@ function setPlayMode() {
         case 1: {
             defaultMode = false;
             repeatMode = true;
-            suffleMode = false;
+            shuffleMode = false;
             playMode.innerHTML = '<i class="fa fa-repeat fa-2x"></i>'
             break;
         }
         case 2: {
             defaultMode = false;
             repeatMode = false;
-            suffleMode = true;
+            shuffleMode = true;
             playMode.innerHTML = '<i class="fa fa-random fa-2x"></i>';
             break;
         }
@@ -361,7 +361,7 @@ function setPlayMode() {
                 playMode.innerHTML = '<i class="fa fa-bullseye fa-2x"></i>';
                 defaultMode = true;
                 repeatMode = false;
-                suffleMode = false;
+                shuffleMode = false;
                 setModeCount = 0;
             }
     }
