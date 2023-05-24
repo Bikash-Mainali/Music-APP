@@ -1,7 +1,72 @@
+
+body{
+  background: radial-gradient(circle, rgb(0 0 0 / 79%) 0%, rgb(23 33 21) 100%);
+}
+#body-content{
+opacity:0.7;
+}
 .player {
   position: fixed;
   bottom: 0px;
   width: 100%;
+  color:black;
+}
+h2{
+  font-family: "Sofia", sans-serif;
+  font-size: 30px;
+  color:white;
+  text-align:center;
+  background: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(70,252,134,1) 100%);
+  border-radius:5px;
+  box-shadow: 0px 3px 3px 1px #5bdb8a
+}
+.btn{
+  background: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(70,252,134,1) 100%);
+  font-weight: bold;
+}
+input{
+  box-shadow: #a9e2b5 0px 2px 8px 2px;
+  border: none;
+  border-radius: 5px;
+  color:black;
+
+}
+
+#front-img{
+  animation: zoom-in-zoom-out 3s ease infinite;
+}
+
+#logo{
+  margin: 24px;
+  width: 90px;
+  height: 90px;
+  animation: zoom-in-zoom-out 1s ease infinite;
+}
+
+@keyframes zoom-in-zoom-out {
+  0% {
+    transform: scale(1, 1);
+  }
+  50% {
+    transform: scale(1.5, 1.5);
+  }
+  100% {
+    transform: scale(1, 1);
+  }
+}
+.play-list-btn, .play-list-btn i, .song-list-btn, .song-list-btn i {
+  background: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(70,252,134,1) 100%);
+  border-radius: 50%;
+}
+
+.play-list-btn i:hover{
+cursor: pointer;
+background: radial-gradient(circle, rgb(118, 131, 194) 0%, rgba(70,252,134,1) 100%);
+}
+
+.remove-btn, .remove-btn i{
+  background: radial-gradient(circle, #e60319 0%, rgb(181 45 45) 100%);
+  border-radius: 50%;
 }
 
 .buttons div {
@@ -9,10 +74,9 @@
 }
 
 #user {
-  color: green;
+  font-family: 'Brush Script MT', cursive;
 }
 
-#login-section,
 #logout-section {
   text-align: right
 }
@@ -36,7 +100,10 @@ button :hover {
 .playpause-song:hover, .prev-song:hover, .next-song:hover {
   opacity: 1.0;
 }
-
+table tbody, tfoot, tr{
+  border: 1px solid #3e3d3d;
+  color:white;
+}
 .slider-container {
   width: 75%;
   max-width: 400px;

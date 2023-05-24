@@ -33,11 +33,10 @@ window.onload = function () {
         showHide({musicSection: 'show', loginSection: 'hide', logoutSection: 'show'});
         document.getElementById('user').textContent = 'Welcome ' +localStorage.getItem('username');
     } else {
-        debugger
         showHide({musicSection: 'hide', loginSection: 'show', logoutSection: 'hide'})
     }
     document.getElementById('logoutBtn').onclick = logout;
-    document.getElementById('loginBtn').onclick = login;
+    document.getElementById('login-form').onsubmit = login;
     document.getElementById('searchBtn').onclick = searchSong;
     
 }
@@ -80,7 +79,6 @@ async function getAllPlayListSongs() {
         document.getElementById("empty-table").innerHTML = `<small>Songs not added yet</small>`;
         document.querySelector('.player').style.display = 'none';
     } else {
-        debugger
         if(isPlaying){
             //document.querySelector(`[value="${playingSongId}"]`).innerHTML = '<i class="fa fa-play-circle fa-2x"></i>'
         
@@ -102,11 +100,11 @@ populateToMusicTable = (songs) => {
                  <td>${song.releaseDate}</td>
                  <td>
                      <button 
-                         class="fa fa-plus-circle song-list-btn" 
+                         class="song-list-btn" 
                          value= ${song.id} 
-                         aria-hidden="true" 
-                         onclick="addToPlayList(this)">
+                         onclick="addToPlayList(this)"
                      </button>
+                     <i class="fa fa-plus-circle fa-2x"></i>
                  </td>
                  </tr>`
     });
@@ -135,10 +133,11 @@ populateToPlayListTable = (playList) => {
                     <span style="display:none">${song.songId}</span>
                 </td>
                 <td>${song.title}</td>
-                <td><button 
+                <td><button
                         aria-hidden="true" 
                         value=${song.songId} 
                         onclick="removeFromPlayList(this)"
+                        class="remove-btn"
                     </button>
                     <i class="fa fa-minus-circle fa-2x"></i>
                 </td>
@@ -303,7 +302,8 @@ function pauseSong(currentBtn) {
     playpauseBtn.innerHTML = '<i class="fa fa-play-circle fa-5x"></i>';;
 }
 
-async function login() {
+async function login(event) {
+    event.preventDefault();
     const username = document.getElementById('username').value;
     const password = document.getElementById('password').value;
     const requestBody = {
@@ -331,6 +331,7 @@ async function login() {
 }
 
 function logout() {
+    resetPlayerSection();
     localStorage.removeItem('username');
     localStorage.removeItem('token');
     showHide({musicSection: 'hide', loginSection: 'show', logoutSection: 'hide'})
@@ -355,7 +356,7 @@ function setPlayMode() {
         }
         default:
             {
-                playMode.innerHTML = '<i class="fas fa-circle fa-2x"></i>';
+                playMode.innerHTML = '<i class="fa fa-bullseye"></i>';
                 defaultMode = true;
                 repeatMode = false;
                 suffleMode = false;
