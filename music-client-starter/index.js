@@ -30,48 +30,48 @@ window.onload = function () {
     if (localStorage.getItem('token')) {
         getAllSongs();
         getAllPlayListSongs();
-        showHide({musicSection: 'show', loginSection: 'hide', logoutSection: 'show'});
-        document.getElementById('user').textContent = 'Welcome ' +localStorage.getItem('username').toUpperCase();
+        showHide({ musicSection: 'show', loginSection: 'hide', logoutSection: 'show' });
+        document.getElementById('user').textContent = 'Welcome ' + localStorage.getItem('username').toUpperCase();
     } else {
-        showHide({musicSection: 'hide', loginSection: 'show', logoutSection: 'hide'})
+        showHide({ musicSection: 'hide', loginSection: 'show', logoutSection: 'hide' })
     }
     document.getElementById('logoutBtn').onclick = logout;
     document.getElementById('login-form').onsubmit = login;
     document.getElementById('searchBtn').onclick = searchSong;
-    
+
 }
-async function searchSong(){
+async function searchSong() {
     const searchKeyword = document.getElementById('search-song').value;
     const response = await fetch(BASE_URL + '/api/music?search=' + searchKeyword,
-    {
-        headers: {
-        'Authorization' :`Bearer ${localStorage.getItem('token')}`, 
-        'Content-Type': 'application/json'
-    }
-});
-const filteredSongs = await response.json();
-populateToMusicTable(filteredSongs);
+        {
+            headers: {
+                'Authorization': `Bearer ${localStorage.getItem('token')}`,
+                'Content-Type': 'application/json'
+            }
+        });
+    const filteredSongs = await response.json();
+    populateToMusicTable(filteredSongs);
 }
 
 async function getAllSongs() {
-    const response = await fetch(BASE_URL + '/api/music', 
-    {
-        headers: {
-        'Authorization' :`Bearer ${localStorage.getItem('token')}`, 
-        'Content-Type': 'application/json'
-    }
-})
+    const response = await fetch(BASE_URL + '/api/music',
+        {
+            headers: {
+                'Authorization': `Bearer ${localStorage.getItem('token')}`,
+                'Content-Type': 'application/json'
+            }
+        })
     const songs = await response.json();
     populateToMusicTable(songs);
 }
 async function getAllPlayListSongs() {
     const response = await fetch(BASE_URL + '/api/playlist',
-    {
-        headers: {
-        'Authorization' :`Bearer ${localStorage.getItem('token')}`, 
-        'Content-Type': 'application/json'
-    }
-});
+        {
+            headers: {
+                'Authorization': `Bearer ${localStorage.getItem('token')}`,
+                'Content-Type': 'application/json'
+            }
+        });
     const playList = await response.json();
     playListBackUp = playList;
     populateToPlayListTable(playList);
@@ -79,9 +79,9 @@ async function getAllPlayListSongs() {
         document.getElementById("empty-table").innerHTML = `<small>Songs not added yet</small>`;
         document.querySelector('.player').style.display = 'none';
     } else {
-        if(isPlaying){
+        if (isPlaying) {
             //document.querySelector(`[value="${playingSongId}"]`).innerHTML = '<i class="fa fa-play-circle fa-2x"></i>'
-        
+
             //syncPlayPauseIconEveryWhere('<i class="fa fa-pause-circle fa-2x"></i>')
         }
         document.getElementById("empty-table").innerHTML = `<small>${playList.length} songs in your play list</small>`;
@@ -175,10 +175,10 @@ async function addToPlayList(currentBtn) {
             "songId": currentBtn.value
         }),
         headers: {
-            'Authorization' :`Bearer ${TOKEN}`, 
+            'Authorization': `Bearer ${TOKEN}`,
             'Content-Type': 'application/json'
         }
-    });  
+    });
 
     //refresh play list
     if (response.status) {
@@ -195,9 +195,10 @@ async function removeFromPlayList(currentBtn) {
             "songId": currentBtn.value
         }),
         headers: {
-            'Authorization' :`Bearer ${TOKEN}`, 
+            'Authorization': `Bearer ${TOKEN}`,
             'Content-Type': 'application/json'
-        }    });
+        }
+    });
     if (currentSong.value === currentBtn.value) {
         //clear song from current player section
         resetPlayerSection();
@@ -234,7 +235,7 @@ function playSong(currentBtn) {
 }
 
 function playpauseSong(currentBtn) {
-    if (!isPlaying){
+    if (!isPlaying) {
         playSong(currentBtn);
         syncPlayPauseIconEveryWhere('<i class="fa fa-pause-circle fa-2x"></i>')
     }
@@ -243,10 +244,10 @@ function playpauseSong(currentBtn) {
         syncPlayPauseIconEveryWhere('<i class="fa fa-play-circle fa-2x"></i>')
     }
 }
-function syncPlayPauseIconEveryWhere(icon){
+function syncPlayPauseIconEveryWhere(icon) {
     const buttonCollection = document.getElementsByClassName('play-list-btn');
-    for(let i = 0; i< buttonCollection.length; i++){
-        if(playListBackUp[currentSongIndex].songId === buttonCollection[i].id){
+    for (let i = 0; i < buttonCollection.length; i++) {
+        if (playListBackUp[currentSongIndex].songId === buttonCollection[i].id) {
             console.log(buttonCollection[i]);
             buttonCollection[i].innerHTML = icon
         }
@@ -320,11 +321,11 @@ async function login(event) {
         const result = await response.json();
         localStorage.setItem('token', result.accessToken);
         localStorage.setItem('username', result.username);
-        document.getElementById('user').textContent = 'Welcome ' +result.username.toUpperCase();
+        document.getElementById('user').textContent = 'Welcome ' + result.username.toUpperCase();
         //location.href = 'welcome.html';
         getAllSongs();
         getAllPlayListSongs();
-        showHide({musicSection: 'show', loginSection: 'hide', logoutSection: 'show'})
+        showHide({ musicSection: 'show', loginSection: 'hide', logoutSection: 'show' })
         document.getElementById('errorMsg').innerText = '';
     } else {
         document.getElementById('errorMsg').innerText = 'Incorrect username and password';
@@ -335,7 +336,7 @@ function logout() {
     resetPlayerSection();
     localStorage.removeItem('username');
     localStorage.removeItem('token');
-    showHide({musicSection: 'hide', loginSection: 'show', logoutSection: 'hide'})
+    showHide({ musicSection: 'hide', loginSection: 'show', logoutSection: 'hide' })
 }
 
 function setPlayMode() {
@@ -367,9 +368,9 @@ function setPlayMode() {
 }
 
 function showHide(showHideObject) {
-    document.getElementById('music-section').style.display = showHideObject.musicSection === 'hide' ? 'none': 'block'
-    document.getElementById('login-section').style.display = showHideObject.loginSection === 'hide' ? 'none': 'block'
-    document.getElementById('logout-section').style.display = showHideObject.logoutSection === 'hide' ? 'none': 'block'
+    document.getElementById('music-section').style.display = showHideObject.musicSection === 'hide' ? 'none' : 'block'
+    document.getElementById('login-section').style.display = showHideObject.loginSection === 'hide' ? 'none' : 'block'
+    document.getElementById('logout-section').style.display = showHideObject.logoutSection === 'hide' ? 'none' : 'block'
 }
 
 function isPlayListEmpty(playList) {
@@ -433,8 +434,7 @@ function randomBgColor() {
     let red = Math.floor(Math.random() * 256) + 64;
     let green = Math.floor(Math.random() * 256) + 64;
     let blue = Math.floor(Math.random() * 256) + 64;
-    let bgColor = "radial-gradient(circle, rgb(" + red + "," + green + "," + blue + ")" + 0 +"%" + "," + "rgb(" + red + "," + green + "," + blue + ")" + 0 + "%)";
+    let bgColor = "radial-gradient(circle, rgb(" + red + "," + green + "," + blue + ")" + 0 + "%" + "," + "rgb(" + red + "," + green + "," + blue + ")" + 0 + "%)";
     document.querySelector('.player').style.background = bgColor;
-  }
-  
-  
+}
+
