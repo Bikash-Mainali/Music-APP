@@ -1,6 +1,7 @@
 
 body{
-  background: radial-gradient(circle, rgb(0 0 0 / 79%) 0%, rgb(23 33 21) 100%);
+  background: linear-gradient(90deg, rgb(0 0 0) 0%, rgb(37 59 37 / 89%) 18%, rgb(42 48 41) 100%);
+
 }
 #body-content{
 opacity:0.7;
@@ -37,6 +38,9 @@ input{
 
 #front-img{
   animation: zoom-in-zoom-out 3s ease infinite;
+}
+#user{
+  color:white;
 }
 
 #logo{
@@ -75,13 +79,13 @@ background: radial-gradient(circle, rgb(118, 131, 194) 0%, rgba(70,252,134,1) 10
 .buttons div {
   padding: 20px;
 }
+h1{
+  font-family: "Audiowide", sans-serif;
+color:white;
+}
 
 #user {
   font-family: 'Brush Script MT', cursive;
-}
-
-#logout-section {
-  text-align: right
 }
 
 button {
@@ -163,5 +167,7 @@ i.fa-play-circle, i.fa-pause-circle, i.fa-step-forward, i.fa-step-backward, i.fa
   cursor: pointer;
 }
 #errorMsg {
-  color: red;
+  color: #ff4f4f;
+  font-size:22px;
+  font-weight: bold;
 }

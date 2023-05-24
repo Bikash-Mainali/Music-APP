@@ -31,7 +31,7 @@ window.onload = function () {
         getAllSongs();
         getAllPlayListSongs();
         showHide({musicSection: 'show', loginSection: 'hide', logoutSection: 'show'});
-        document.getElementById('user').textContent = 'Welcome ' +localStorage.getItem('username');
+        document.getElementById('user').textContent = 'Welcome ' +localStorage.getItem('username').toUpperCase();
     } else {
         showHide({musicSection: 'hide', loginSection: 'show', logoutSection: 'hide'})
     }
@@ -320,7 +320,7 @@ async function login(event) {
         const result = await response.json();
         localStorage.setItem('token', result.accessToken);
         localStorage.setItem('username', result.username);
-        document.getElementById('user').textContent = 'Welcome ' +result.username;
+        document.getElementById('user').textContent = 'Welcome ' +result.username.toUpperCase();
         //location.href = 'welcome.html';
         getAllSongs();
         getAllPlayListSongs();
