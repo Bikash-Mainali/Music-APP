@@ -357,7 +357,7 @@ function setPlayMode() {
         }
         default:
             {
-                playMode.innerHTML = '<i class="fa fa-bullseye"></i>';
+                playMode.innerHTML = '<i class="fa fa-bullseye fa-2x"></i>';
                 defaultMode = true;
                 repeatMode = false;
                 suffleMode = false;
