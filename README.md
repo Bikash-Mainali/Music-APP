@@ -7,3 +7,5 @@ This is a music player application where you can add or remove musics to/from yo
 2. Install npm on your **music-server** folder with ```npm init```
 3. Start **music-server** with ```npm start```
 4. Open index file of **music-client-starter** in your chrome browser
+
+![image!](https://github.com/Bikash-Mainali/Music-APP-Express-JavaScript/blob/master/screenshot.png)
